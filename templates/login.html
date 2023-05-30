@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Restaurantly Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;	
+      font-family: Raleway, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(90deg, #cda45e, #0c0b09);		
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .screen {		
+      background: linear-gradient(90deg, #0c0b09, #cda45e);		
+      position: relative;	
+      height: 600px;
+      width: 360px;	
+      box-shadow: 0px 0px 24px #0c0b09;
+      background-image: url(https://wallpapertag.com/wallpaper/full/1/8/c/133753-popular-black-and-gold-wallpaper-2560x1600-smartphone.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    
+    }
+
+    .screen__content {
+      z-index: 1;
+      position: relative;	
+      height: 100%;
+    }
+
+    .screen__background {		
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);	
+    }
+
+    .screen__background__shape {
+      transform: rotate(45deg);
+      position: absolute;
+    }
+
+    .screen__background__shape1 {
+      height: 520px;
+      width: 520px;
+      background: #FFF;	
+      top: -50px;
+      right: 120px;	
+      border-radius: 0 72px 0 0;
+    }
+
+    .screen__background__shape2 {
+      height: 220px;
+      width: 220px;
+      background: #cda45e;	
+      top: -172px;
+      right: 0;	
+      border-radius: 32px;
+    }
+
+    .screen__background__shape3 {
+      height: 540px;
+      width: 190px;
+      background: linear-gradient(270deg, #0c0b09, #0c0b09);
+      top: -24px;
+      right: 0;	
+      border-radius: 32px;
+    }
+
+    .screen__background__shape4 {
+      height: 400px;
+      width: 200px;
+      background: #cda45e;	
+      top: 420px;
+      right: 50px;	
+      border-radius: 60px;
+    }
+
+    .login {
+      width: 320px;
+      padding: 30px;
+      padding-top: 156px;
+    }
+
+    .login__field {
+      padding: 20px 0px;	
+      position: relative;	
+    }
+
+    .login__icon {
+      position: absolute;
+      top: 30px;
+      color: #0c0b09;
+    }
+
+    .login__input {
+      border: none;
+      border-bottom: 2px solid #D1D1D4;
+      background: none;
+      padding: 10px;
+      padding-left: 24px;
+      font-weight: 700;
+      width: 75%;
+      transition: .2s;
+      color: #cda45e;
+    }
+
+    .login__input:active,
+    .login__input:focus,
+    .login__input:hover {
+      outline: none;
+      border-bottom-color: #0c0b09;
+    }
+
+    .login__submit {
+      background: #cda45e;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 16px 20px;
+      border-radius: 26px;
+      border: 1px solid #D4D3E8;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: #0c0b09;
+      box-shadow: 0px 2px 2px #5C5696;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .login__submit:active,
+    .login__submit:focus,
+    .login__submit:hover {
+      border-color: #6A679E;
+      outline: none;
+    }
+
+    .button__icon {
+      font-size: 24px;
+      margin-left: auto;
+      color: #7875B5;
+    }
+
+    .social-login {	
+      position: absolute;
+      height: 140px;
+      width: 160px;
+      text-align: center;
+      bottom: 0px;
+      right: 0px;
+      color: #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-login__icon {
+      padding: 20px 10px;
+      color: #fff;
+      text-decoration: none;	
+      text-shadow: 0px 0px 8px #0c0b09;
+    }
+
+    .social-login__icon:hover {
+      transform: scale(1.5);	
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 576px) {
+      .screen {
+        width: 100%;
+        height: auto;
+        max-width: 360px;
+      }
+
+      .screen__content {
+        padding: 20px;
+      }
+
+      .login {
+        width: 100%;
+        max-width: 320px;
+        padding-top: 100px;
+      }
+    }
+
+    @media (min-width: 577px) and (max-width: 768px) {
+      .screen {
+        width: 100%;
+        height: auto;
+        max-width: 480px;
+      }
+
+      .screen__content {
+        padding: 40px;
+      }
+
+      .login {
+        width: 100%;
+        max-width: 400px;
+        padding-top: 120px;
+      }
+    }
+	h3:hover{
+		color:#0c0b09
+	}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <form method="post" class="login" action="{% url 'login1' %}">
+          {% csrf_token %}
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input type="text" class="login__input" name="username" placeholder="Username">
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input type="password" class="login__input" name="password" placeholder="Password">
+          </div>
+          <button class="button login__submit" type="submit">
+            <span class="button__text">Log In Now</span>
+            <i class="button__icon fas fa-chevron-right"></i>
+          </button>				
+        </form>
+        <div class="social-login">
+          <h3>Restaurantly</h3>
+          
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</body>
+</html>

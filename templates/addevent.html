@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+  <title>Restaurantly</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color:#cda45e;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+
+  .menu-item {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #040404;
+  }
+
+  .menu-item a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .menu-item a:hover {
+    color: #000;
+  }
+
+  .toggle-btn {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+
+    .toggle-btn {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .main-content {
+      margin-left: 0;
+    }
+  }
+  #button {
+     background: #cda45e;
+     font-size: 14px;
+     margin-top: 30px;
+     padding: 16px 20px;
+     border-radius: 26px;
+     border: 1px solid #D4D3E8;
+     text-transform: uppercase;
+     font-weight: 700;
+     display: flex;
+     align-items: center;
+    
+     color: #0c0b09;
+     box-shadow: 0px 2px 2px #5C5696;
+     cursor: pointer;
+     transition: .2s;
+   }
+#inp {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	
+	transition: .2s;
+  color: #cda45e;
+}
+
+
+  </style>
+  </head>
+  <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;">
+    
+    {% for message in messages %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+  {% if message.tags == 'success' %}
+  <script>
+    var m="{{message}}";
+    swal("Success!",m, "success")
+  </script>
+
+  <!-- modal show -->
+  <!-- <script>
+      $(document).ready(function() {
+          $("#loginmodal").modal('show');
+      });
+  </script> -->
+  
+
+  {% elif message.tags == 'error' %}
+  <script>
+    var m="{{message}}";
+    swal("Denied..!",m, "error")
+  </script>
+
+  {% else %}
+  
+  <script>
+    var m="{{message}}";
+    swal("Welcome..!",m, "info")
+  </script>
+  
+
+  {% endif %}
+
+
+{% endfor %}
+<div class="sidebar" style="opacity: 0.7;" >
+  <!-- <button class="toggle-btn"></button> -->
+  <ul>
+
+  
+    <li class="menu-item"><a href="{% url 'addc' %}">Add Food Category</a></li>
+    
+    <li class="menu-item"> <a href="{% url 'showc' %}">Show Food Category</a></li>
+    <li class="menu-item"><a href="{% url 'addf' %}">Add Food</a></li>
+    
+
+
+    <li class="menu-item"><a href="{% url 'showf' %}">Show Food</a></li>
+    <li class="menu-item"><a href="{% url 'adde' %}">Add Events</a></li>
+    <li class="menu-item"><a href="{% url 'showe' %}">Show Events</a></li>
+    <li class="menu-item"><a href="{% url 'showu' %}">Show Users</a></li>
+
+
+    <li class="menu-item"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
+    <li class="menu-item"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
+    
+    <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+    
+    
+    <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
+    
+
+
+  </ul>
+</div>
+
+<div class="main-content">
+<center>
+    <div class="container-fluid mt-5 " id="bgi">
+        <form action="{% url 'addedb' %}" method="post" enctype="multipart/form-data" class="w-50" >
+            {% csrf_token %}
+<h1 style="color:#cda45e ;" >Add Events</h1>
+<input type="text" name="e_name" placeholder="Event Name" class="form-control" id="inp"><br>
+<input type="file" name="e_image" placeholder="Category" class="form-control" accept="image/*" style="background-color:#cda45e ;"><br>
+<button type="submit"  class="btn btn-warning" id="button">SAVE</button><br>
+</div><br><br><br>
+</center>
+</div>
+
+
+</body>
+</html>
