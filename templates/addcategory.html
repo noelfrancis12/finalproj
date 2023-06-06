@@ -97,15 +97,39 @@
 	padding: 10px;
 	padding-left: 24px;
 	font-weight: 700;
-	
+	font-style: italic;
+  font-weight: bold;
 	transition: .2s;
-  color: #cda45e;
+  color: #040404;
 }
+#file {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+#footer {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      
+    }
+#gold{
+  border-radius: 26px;
+  
+}
+
 
 
   </style>
   </head>
-  <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;">
+  <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ; ">
     
     {% for message in messages %}
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -143,28 +167,28 @@
 
 
 {% endfor %}
-<div class="sidebar" style="opacity: 0.7;">
+<div class="sidebar">
   <!-- <button class="toggle-btn"></button> -->
   <ul>
 
-  
-    <li class="menu-item"><a href="{% url 'addc' %}">Add Food Category</a></li>
+    <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addc' %}">Add Food Category</a></li>
     
-    <li class="menu-item"> <a href="{% url 'showc' %}">Show Food Category</a></li>
-    <li class="menu-item"><a href="{% url 'addf' %}">Add Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'showc' %}">Show Food Category</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addf' %}">Add Food</a></li>
     
 
 
-    <li class="menu-item"><a href="{% url 'showf' %}">Show Food</a></li>
-    <li class="menu-item"><a href="{% url 'adde' %}">Add Events</a></li>
-    <li class="menu-item"><a href="{% url 'showe' %}">Show Events</a></li>
-    <li class="menu-item"><a href="{% url 'showu' %}">Show Users</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showf' %}">Show Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'adde' %}">Add Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showe' %}">Show Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showu' %}">Show Users</a></li>
 
 
-    <li class="menu-item"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
-    <li class="menu-item"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
     
-    <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
     
     
     <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
@@ -173,16 +197,43 @@
 
   </ul>
 </div>
+
+
+
+
+
+
+
+
 <div class="main-content">
 <center>
-    <div class="container-fluid mt-5 "  id="bgi">
-        <form action="{% url 'addcdb' %}" method="post" enctype="multipart/form-data" class="w-50">
+    <div class="container-fluid mt-5 "  id="bgi" ">
+        <form action="{% url 'addcdb' %}" method="post" enctype="multipart/form-data" class="w-50" >
             {% csrf_token %}
-<h1 style="color:#cda45e ;">Add category</h1>
+<h1 style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;" >Add category</h1>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Enter Food Category:</label>
 <input type="text" name="c_name" placeholder="Category" class="form-control" id="inp"><br>
-<input type="file" name="c_image" placeholder="Category" class="form-control" accept="image/*" style="background-color:#cda45e ;"><br>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Upload Food Category Image:</label>
+<input type="file" name="c_image" placeholder="Category" class="form-control" accept="image/*" id="gold"  style="background-color:#cda45e ;"><br>
+
+
+
 <button type="submit"  class="btn btn-warning" id="button">SAVE</button><br>
 </div><br><br><br>
+
+
+<!-- Footer -->
+<footer class="text-center text-lg-start" id="footer" style="font-family:serif;font-style: italic;font-weight: bold;background-color: #040404;color: #cda45e;" >
+  
+  <div class="text-center" >
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Restaurantly.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
 </center>
 </div>
 </body>

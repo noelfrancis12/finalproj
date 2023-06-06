@@ -14,7 +14,7 @@ from django.conf import settings
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    return render(request,'home.html')
 def loginpg(request):
     return render(request,'login.html')
 @login_required(login_url='login1')
@@ -30,7 +30,7 @@ def login1(request):
         if user.is_staff:
             login(request,user)
             messages.success(request,'Welcome Admin...')
-            return redirect('addc')
+            return redirect('eventrequest')
         else:
             login(request,user)
             auth.login(request,user)
@@ -325,6 +325,43 @@ def approvedbookings(request):
     approvedbookings=Eventbooking.objects.filter(approved=True, completed=False)
     approvedbooking=Foodbooking.objects.filter(approved=True, completed=False)
     context={'approvedbookings':approvedbookings,'approvedbooking':approvedbooking}
-    return render(request,'approvedbookings.html',context)   
+    return render(request,'approvedbookings.html',context) 
+  
+def editpage(request):
+    
+    customer=Customer.objects.get(userc=request.user)
+    context={'usrkey': customer}
+    return render(request,'accountedit.html',context)
 
+
+def editdetails(request,pk):
+    
+    if request.method=='POST':
+        
+        customer=Customer.objects.get(id=pk)
+        user_id=customer.userc.id
+        user=User.objects.get(id=user_id)
+        user.first_name=request.POST.get('first_name')
+        user.last_name=request.POST.get('last_name')
+        user.username=request.POST.get('username')
+        user.email=request.POST.get('email')
+       
+        customer.age=request.POST.get('age')
+        customer.number=request.POST.get('number')
+        customer.address=request.POST.get('address')
+        old=customer.image
+        new=request.FILES.get('files')
+        if old != None and new==None:
+            customer.image=old
+        else:
+            customer.image=new 
+          
+     
+
+        customer.save()
+        user.save()
+        messages.success(request,'Profile Updated')
+        
+        
+        return redirect('accountpg')
     

@@ -35,7 +35,7 @@ top: 13px;
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 100%;
+	
 	color: #0c0b09;
 	box-shadow: 0px 2px 2px #5C5696;
 	cursor: pointer;
@@ -50,7 +50,11 @@ top: 13px;
 	font-weight: 700;
 	width: 75%;
 	transition: .2s;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+
+
 </style>
 
 
@@ -66,7 +70,7 @@ top: 13px;
         <div class="col-12 col-lg-9 col-xl-7">
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">
-              <b><h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="text-align: center;">Registration Form</h3></b>
+              <b><h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="text-align: center;font-family:Georgia, 'Times New Roman', Times, serif;">Registration Form</h3></b>
               <form  enctype="multipart/form-data" method="post"  action="{% url 'signupdb' %}" class="needs-validation" novalidate target="_self">
                 {% csrf_token %}
   
@@ -75,7 +79,7 @@ top: 13px;
   
                     <div class="form-outline">
                       <input type="text" id="cd" class="form-control form-control-lg" name="first_name" required pattern="[A-Z][a-z]*" />
-                      <label class="form-label" for="firstName">First Name</label>
+                      <label class="form-label" for="firstName" style="font-family:Georgia, 'Times New Roman', Times, serif;">First Name</label>
                       <div class="invalid-feedback">First letter should be capital.</div>
                     </div>
   
@@ -84,7 +88,7 @@ top: 13px;
   
                     <div class="form-outline">
                       <input type="text" id="cd" class="form-control form-control-lg"name="last_name" required pattern="[A-Z][a-z]*" />
-                      <label class="form-label" for="lastName">Last Name</label>
+                      <label class="form-label" for="lastName" style="font-family:Georgia, 'Times New Roman', Times, serif;">Last Name</label>
                       <div class="invalid-feedback">First letter should be capital.</div>
                     </div>
   
@@ -96,7 +100,7 @@ top: 13px;
   
                     <div class="form-outline datepicker w-100">
                       <input type="number" class="form-control form-control-lg" id="cd" name="age" />
-                      <label for="age" class="form-label">Age</label>
+                      <label for="age" class="form-label" style="font-family:Georgia, 'Times New Roman', Times, serif;">Age</label>
                     </div>
   
                   </div>
@@ -105,7 +109,7 @@ top: 13px;
   
                     <div class="form-outline">
                       <input type="text" id="cd" class="form-control form-control-lg" name="address" />
-                      <label class="form-label" for="lastName">Address</label>
+                      <label class="form-label" for="lastName" style="font-family:Georgia, 'Times New Roman', Times, serif;">Address</label>
                     </div>
   
                   </div>
@@ -117,7 +121,7 @@ top: 13px;
   
                     <div class="form-outline">
                       <input type="email" id="cd" class="form-control form-control-lg" name="email" />
-                      <label class="form-label" for="emailAddress">Email</label>
+                      <label class="form-label" for="emailAddress" style="font-family:Georgia, 'Times New Roman', Times, serif;">Email</label>
                     </div>
   
                   </div>
@@ -125,7 +129,7 @@ top: 13px;
   
                     <div class="form-outline">
                       <input type="tel" id="cd" class="form-control form-control-lg" name="number" required pattern="[0-9]{10}" />
-                      <label class="form-label" for="phoneNumber">Phone Number</label> 
+                      <label class="form-label" for="phoneNumber" style="font-family:Georgia, 'Times New Roman', Times, serif;">Phone Number</label> 
                       <div class="invalid-feedback">Please enter a valid 10-digit number</div>
                     </div>
   
@@ -137,7 +141,7 @@ top: 13px;
     
                       <div class="form-outline">
                         <input type="text" id="cd" class="form-control form-control-lg" name="username" />
-                        <label class="form-label" for="emailAddress">Username</label>
+                        <label class="form-label" for="emailAddress" style="font-family:Georgia, 'Times New Roman', Times, serif;">Username</label>
                       </div>
     
                     </div>
@@ -145,7 +149,7 @@ top: 13px;
     
                       <div class="form-outline">
                         <input type="file" id="phoneNumber" class="form-control " name="image" />
-                        <label class="form-label" for="phoneNumber">Upload your Photo</label>
+                        <label class="form-label" for="phoneNumber" style="font-family:Georgia, 'Times New Roman', Times, serif;">Upload your Photo</label>
                       </div>
     
                     </div>
@@ -155,7 +159,7 @@ top: 13px;
     
                       <div class="form-outline">
                         <input type="password" id="cd" class="form-control form-control-lg" name="password" />
-                        <label class="form-label" for="emailAddress">Password</label>
+                        <label class="form-label" for="emailAddress" style="font-family:Georgia, 'Times New Roman', Times, serif;">Password</label>
                       </div>
     
                     </div>
@@ -163,14 +167,19 @@ top: 13px;
     
                       <div class="form-outline">
                         <input type="password" id="cd" class="form-control form-control-lg" name="cpassword" />
-                        <label class="form-label" for="phoneNumber">Confirm Password</label>
+                        <label class="form-label" for="phoneNumber" style="font-family:Georgia, 'Times New Roman', Times, serif;">Confirm Password</label>
                       </div>
     
                     </div>
                   </div>
   
+
+
+
+
+                  
                 <div class="mt-4 pt-2">
-                  <center><input class="btn btn-primary btn-lg" type="submit" value="Sign-up" id="ab" /><br></center>
+                  <center><input class="btn btn-primary btn-lg" type="submit"  value="Sign-up" id="ab" /><br></center>
                 </div>
   
                 

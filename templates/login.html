@@ -130,7 +130,7 @@
     .login__input:focus,
     .login__input:hover {
       outline: none;
-      border-bottom-color: #0c0b09;
+      border-bottom-color: #cda45e;
     }
 
     .login__submit {
@@ -144,7 +144,7 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      width: 100%;
+      
       color: #0c0b09;
       box-shadow: 0px 2px 2px #5C5696;
       cursor: pointer;
@@ -154,7 +154,7 @@
     .login__submit:active,
     .login__submit:focus,
     .login__submit:hover {
-      border-color: #6A679E;
+      border-color: #cda45e;
       outline: none;
     }
 
@@ -227,17 +227,23 @@
         padding-top: 120px;
       }
     }
-	h3:hover{
-		color:#0c0b09
+	h3{
+		color:#fff
 	}
+  h3:hover{
+    color: #cda45e;
+  }
+  
   </style>
 </head>
 <body>
   <div class="container">
     <div class="screen">
       <div class="screen__content">
+        <center>
         <form method="post" class="login" action="{% url 'login1' %}">
           {% csrf_token %}
+          <h3 style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;">Restaurantly Login</h3>
           <div class="login__field">
             <i class="login__icon fas fa-user"></i>
             <input type="text" class="login__input" name="username" placeholder="Username">
@@ -246,15 +252,12 @@
             <i class="login__icon fas fa-lock"></i>
             <input type="password" class="login__input" name="password" placeholder="Password">
           </div>
-          <button class="button login__submit" type="submit">
+          <center><button class="button login__submit" id="button" type="submit">
             <span class="button__text">Log In Now</span>
             <i class="button__icon fas fa-chevron-right"></i>
-          </button>				
+          </button></center>				
         </form>
-        <div class="social-login">
-          <h3>Restaurantly</h3>
-          
-        </div>
+      </center>
       </div>
      
     </div>

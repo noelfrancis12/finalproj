@@ -39,4 +39,6 @@ urlpatterns = [
     path('approvef/<int:pk>',views.approvef,name='approvef'),
     path('rejectf/<int:pk>',views.rejectf,name='rejectf'),
     path('approvedbookings/',views.approvedbookings,name='approvedbookings'),
+     path('editpage',views.editpage,name='editpage'),
+    path('editdetails/<int:pk>',views.editdetails,name='editdetails'),
 ]

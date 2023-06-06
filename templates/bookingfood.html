@@ -96,15 +96,31 @@
 	padding: 10px;
 	padding-left: 24px;
 	font-weight: 700;
-	
+	font-style: italic;
 	transition: .2s;
-  color: #0c0b09;
+  color: #040404;
 }
-   
-   
+#gold{
+  border-radius: 26px;
+}   
+#footer {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      
+    }
+    #bgi {
+  margin-bottom: 50px; /* Increase this value to increase the distance */
+}      
      </style>
      </head>
-     <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;">
+     <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ;">
        
        {% for message in messages %}
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -142,34 +158,34 @@
    
    
    {% endfor %}
-   <div class="sidebar" style="opacity: 0.7;" >
-     <!-- <button class="toggle-btn"></button> -->
-     <ul>
-   
-     
-       <li class="menu-item"><a href="{% url 'accountpg'  %}">Account</a></li>
-       
-       <li class="menu-item"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
-       <li class="menu-item"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
-       
-   
-   
-       <li class="menu-item"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
-       
-   
-   
-       
-   
-       
-       <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
-       
-       
-       <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
-       
-   
-   
-     </ul>
-   </div>
+   <div class="sidebar">
+    <!-- <button class="toggle-btn"></button> -->
+    <ul>
+  
+     <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'accountpg'  %}">Account</a></li>
+      
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
+      
+  
+  
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
+      
+  
+  
+      
+  
+      
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
+      
+      
+      <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
+      
+  
+  
+    </ul>
+  </div>
            
    
    
@@ -192,12 +208,12 @@
                 <form method="post" action="{% url 'foodbookingdb' %}" target="_self" class="needs-validation w-50" novalidate>
                     {% csrf_token %}
                     <div >
-                        <h2 class="header" style="text-align: center;color:#cda45e ;">Select Food</h2>
-                        <h5 class="header" style="text-align: center;color:#cda45e ;">Our foods are <b>scrumtuous</b> and <b>aromatic</b></h5><br><br>
+                        <h2 class="header" style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;">Select Food</h2>
+                        <h5 class="header" style="font-family:serif;font-style: italic;font-weight: bold;">Our foods are <b>scrumtuous</b> and <b>aromatic...</b></h5><br><br>
     
                         <div >
-                            <label for="eventname">Select Food Category:</label>
-                            <select name="select1" class="form-control" id="" style="background-color:#cda45e ;">
+                            <label for="eventname" style="font-style: italic;font-weight: bold;float: left;">Select Food Category:</label>
+                            <select name="select1" class="form-control" id="gold" style="background-color:#cda45e ;">
                               <option value="">Select category</option>
                                 {% for d in c %}
                                 <option value="{{d.id}}" >{{d.c_name}}</option>
@@ -206,8 +222,8 @@
                         </div><br>
 
                         <div >
-                            <label for="eventname">Select Food:</label>
-                            <select name="select2" class="form-control" id="" style="background-color:#cda45e ;">
+                            <label for="eventname" style="font-style: italic;font-weight: bold;float: left;">Select Food:</label>
+                            <select name="select2" class="form-control" id="gold" style="background-color:#cda45e ;">
                               <option value="">Select Food</option>
                                 {% for d in f %}
                                 <option value="{{d.id}}" >{{d.f_name}}</option>
@@ -218,16 +234,16 @@
 
 
                         <div >
-                            <label for="date">Delivery Date:</label>
-                            <input type="date"  name="date" class="form-control mt-3" placeholder="Enter Event Date" style="background-color:#cda45e ;" id="inp" required> 
+                            <label for="date" style="font-style: italic;font-weight: bold;float: left;">Delivery Date:</label>
+                            <input type="date"  name="date" class="form-control mt-3" placeholder="Enter Event Date" style="background-color:#cda45e ;" id="gold" required> 
                         </div><br>
                         <div >
-                            <label for="time">Delivery Time:</label>
-                            <input  type="time" name="time" class="form-control mt-3" placeholder="Enter Event time" style="background-color:#cda45e ;" id="inp" required> 
+                            <label for="time" style="font-style: italic;font-weight: bold;float: left;">Delivery Time:</label>
+                            <input  type="time" name="time" class="form-control mt-3" placeholder="Enter Event time" style="background-color:#cda45e ;" id="gold" required> 
                         </div><br>
                        
                         <div >
-                            <label for="people">Number of People:</label>
+                            <label for="people" style="font-style: italic;font-weight: bold;float: left;">Number of People:</label>
                             <input type="number" id="inp"  name="people" class="form-control mt-3" placeholder="Enter Number of People" id="inp" required> 
                         </div><br>
 
@@ -246,17 +262,17 @@
                       </div>
                     </form>
               
-            </div>
-          </center>
+            
+         
               <!-- <div class="modal-footer">
                 <button class="btn" data-bs-dismiss="modal" style=" color: white; background-color: rgb(5, 12, 69);" type="button"><a href="#" style="text-decoration: none;color: rgb(255, 255, 255);">Back</a> </button>
     
               </div> -->
-        </div>
+        
 
     
-    </div>
-</div>
+    
+
 
 
 
@@ -323,5 +339,22 @@
 
 
 </script>
+
+
+
+
+</center>
+<!-- Footer -->
+<footer class="text-center text-lg-start" id="footer" style="font-family:serif;font-style: italic;font-weight: bold;background-color: #040404;color: #cda45e;">
+  
+  <!-- Copyright -->
+  <div class="text-center" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Restaurantly.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</div>
 </body>
 </html>

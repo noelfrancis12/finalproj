@@ -3,7 +3,7 @@
 <head>
     
     
-    <title>Restaurantly</title>
+  <title>Restaurantly</title>
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -33,7 +33,6 @@
      .main-content {
        margin-left: 200px;
        padding: 20px;
-       width:75%;
      }
    
      .menu-item {
@@ -91,20 +90,38 @@
      transition: .2s;
    }
    #inp {
-     border: none;
-     border-bottom: 2px solid #D1D1D4;
-     background: none;
-     padding: 10px;
-     padding-left: 24px;
-     font-weight: 700;
-     
-     transition: .2s;
-   }
-   
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	font-style: italic;
+	transition: .2s;
+  color: #040404;
+}
+#gold{
+  border-radius: 26px;
+}
+#footer {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      
+    }
+    #bgi {
+  margin-bottom: 50px; /* Increase this value to increase the distance */
+}      
    
      </style>
      </head>
-     <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;">
+     <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ;">
        
        {% for message in messages %}
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -142,34 +159,34 @@
    
    
    {% endfor %}
-   <div class="sidebar" style="opacity: 0.7;" >
-     <!-- <button class="toggle-btn"></button> -->
-     <ul>
-   
-     
-       <li class="menu-item"><a href="{% url 'accountpg'  %}">Account</a></li>
-       
-       <li class="menu-item"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
-       <li class="menu-item"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
-       
-   
-   
-       <li class="menu-item"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
-       
-   
-   
-       
-   
-       
-       <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
-       
-       
-       <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
-       
-   
-   
-     </ul>
-   </div>
+   <div class="sidebar">
+    <!-- <button class="toggle-btn"></button> -->
+    <ul>
+  
+     <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'accountpg'  %}">Account</a></li>
+      
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
+      
+  
+  
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
+      
+  
+  
+      
+  
+      
+      <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
+      
+      
+      <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
+      
+  
+  
+    </ul>
+  </div>
            
    
    
@@ -180,150 +197,169 @@
 
 <div  class="main-content"  >
     
-<center>
-  <div class="container-fluid mt-5 "  id="bgi">
-            <!-- <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> -->
-          
-    
-              
-                <form method="post" action="{% url 'eventbookingdb' %}" target="_self" class="needs-validation w-50" novalidate>
-                    {% csrf_token %}
-                    
-                        <h2 class="header" style="text-align: center;color:#cda45e ;">Customize Event</h2>
-                        <h5 class="header" style="text-align: center;color:#cda45e ;">Let the <b>Moments</b> that matter the most <b>shine</b></h5><br><br>
-    
-                        <div >
-                            <label for="eventname">Event Name:</label>
-                            <select name="select1" class="form-control" id="" style="background-color:#cda45e ;">
-                              <option value="">Select Event</option>
-                                {% for d in p %}
-                                <option value="{{d.id}}" >{{d.e_name}}</option>
-                                {% endfor %}
-                            </select>
-                        </div><br>
-                        <div >
-                            <label for="date">Event Date:</label>
-                            <input type="date"  name="date" class="form-control mt-3" placeholder="Enter Event Date" style="background-color:#cda45e ;" required> 
-                        </div><br>
-                        <div >
-                            <label for="time">Event Time:</label>
-                            <input  type="time" name="time" class="form-control mt-3" placeholder="Enter Event time" style="background-color:#cda45e ;"  required> 
-                        </div><br>
-                        <div >
-                            <label for="venue">Event Venue:</label>
-                            <input type="text"  name="place" class="form-control mt-3" placeholder="Enter Event Venue" style="background-color:#cda45e ;" required> 
-                        </div><br>
-                        <div >
-                            <label for="people">Number of People:</label>
-                            <input type="number" id="people"  name="people" class="form-control mt-3" placeholder="Enter Number of People" style="background-color:#cda45e ;" required> 
-                        </div><br>
-
-                        
-                            <div>
-                                <label for="people">Total amount:</label>
-                                <input type="number" id="total"  name="amount" class="form-control mt-3" placeholder="Enter Amount" style="background-color:#cda45e ;" > 
-    
-                                <!-- <span id="total">0/-</span> -->
-                            </div><br>
-      
-                            <div >
-                                <label for="eventname">Select Food:</label>
-                                <select name="select2" class="form-control" id="" style="background-color:#cda45e ;">
-                                  <option value="">Select Food</option>
-                                    {% for d in f %}
-                                    <option value="{{d.id}}" >{{d.f_name}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div><br>
-                        
-                        
-                          
-                        <center><input type='submit'  value='BOOK NOW' id="button"></center>
-                        <br><br>
-                          
-                          
-              
-                      </div>
-                    </form>
-              
-            </div>
-          </center>           
-              <!-- <div class="modal-footer">
-                <button class="btn" data-bs-dismiss="modal" style=" color: white; background-color: rgb(5, 12, 69);" type="button"><a href="#" style="text-decoration: none;color: rgb(255, 255, 255);">Back</a> </button>
-    
+  <center>
+    <div class="container-fluid mt-5 "  id="bgi">
+              <!-- <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div> -->
-        </div>
-
+            
+      
+                
+                  <form method="post" action="{% url 'eventbookingdb' %}" target="_self" class="needs-validation w-50" novalidate>
+                      {% csrf_token %}
+                      
+                          <h2 class="header" style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;">Customize Event</h2>
+                          <h5 class="header" style="font-family:serif;font-style: italic;font-weight: bold;">Let the <b>Moments</b> that matter the most <b>shine...</b></h5><br><br>
+      
+                          <div >
+                              <label for="eventname" style="font-style: italic;font-weight: bold;float: left;">Event Name:</label>
+                              <select name="select1" class="form-control" id="gold" style="background-color:#cda45e ;">
+                                <option value="">Select Event</option>
+                                  {% for d in p %}
+                                  <option value="{{d.id}}" >{{d.e_name}}</option>
+                                  {% endfor %}
+                              </select>
+                          </div><br>
+                          <div >
+                              <label for="date" style="font-style: italic;font-weight: bold;float: left;">Event Date:</label>
+                              <input type="date"  name="date" class="form-control mt-3" id="gold" placeholder="Enter Event Date" style="background-color:#cda45e ;" required> 
+                          </div><br>
+                          <div >
+                              <label for="time" style="font-style: italic;font-weight: bold;float: left;">Event Time:</label>
+                              <input  type="time" name="time" class="form-control mt-3" id="gold" placeholder="Enter Event time" style="background-color:#cda45e ;"  required> 
+                          </div><br>
+                          <div >
+                              <label for="venue" style="font-style: italic;font-weight: bold;float: left;">Event Venue:</label>
+                              <input type="text"  name="place" class="form-control mt-3" id="gold" placeholder="Enter Event Venue" style="background-color:#cda45e ;" required> 
+                          </div><br>
+                          <div >
+                              <label for="people" style="font-style: italic;font-weight: bold;float: left;">Number of People:</label>
+                              <input type="number"   name="people" id="gold" class="form-control mt-3" placeholder="Enter Number of People" style="background-color:#cda45e ;" required> 
+                          </div><br>
+  
+                          
+                              <div>
+                                  <label for="people" style="font-style: italic;font-weight: bold;float: left;">Total amount:</label>
+                                  <input type="number"   name="amount" id="gold" class="form-control mt-3" placeholder="Enter Amount" style="background-color:#cda45e ;" > 
+      
+                                  <!-- <span id="total">0/-</span> -->
+                              </div><br>
+        
+                              <div >
+                                  <label for="eventname" style="font-style: italic;font-weight: bold;float: left;">Select Food:</label>
+                                  <select name="select2" class="form-control" id="gold" style="background-color:#cda45e ;">
+                                    <option value="">Select Food</option>
+                                      {% for d in f %}
+                                      <option value="{{d.id}}" >{{d.f_name}}</option>
+                                      {% endfor %}
+                                  </select>
+                              </div><br>
+                          
+                          <div>
+                            
+                          <center><input type='submit'  value='BOOK NOW' id="button"></center>
+                          <br><br>
+                        </div>
+                        </form>
+                
+                       
+                
+                
+  
+  
+  
+  
+  
+              
+                      
+                <!-- <div class="modal-footer">
+                  <button class="btn" data-bs-dismiss="modal" style=" color: white; background-color: rgb(5, 12, 69);" type="button"><a href="#" style="text-decoration: none;color: rgb(255, 255, 255);">Back</a> </button>
+      
+                </div> -->
+        
+  
+      
+     
+  
+  
+  
+  
+  <script>
+  
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+  
+  
+  
+  </script>  
+  
+  <!--<script>
+      // Get form elements
+      const menu = document.getElementById('menu');
+      const people = document.getElementById('people');
+      const package = document.getElementById('package');
+      const total = document.getElementById('total');
     
-   
-
-
-
-
-<script>
-
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
+      // Calculate total cost on change
+      [menu, people, package].forEach(el => el.addEventListener('change', () => {
+        const menuCost = menu.value * people.value;
+        const packageCost = package.value;
+        const totalPrice = menuCost + parseInt(packageCost);
+        total.textContent = `${totalPrice}/-`;
+      }));
+  </script> -->
+  
+  <script>
+  
+      function calculateTotal() {
+  
+          var package = parseInt(document.getElementById("package").value);
+          var menu =parseInt(document.getElementById("menu").value);
+          var people = parseInt(document.getElementById("people").value);
+    
+         
+          var total = (package + (menu * people));
+          document.getElementById("total").value = total;
+  
       }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-
-
-
-</script>  
-
-<!--<script>
-    // Get form elements
-    const menu = document.getElementById('menu');
-    const people = document.getElementById('people');
-    const package = document.getElementById('package');
-    const total = document.getElementById('total');
   
-    // Calculate total cost on change
-    [menu, people, package].forEach(el => el.addEventListener('change', () => {
-      const menuCost = menu.value * people.value;
-      const packageCost = package.value;
-      const totalPrice = menuCost + parseInt(packageCost);
-      total.textContent = `${totalPrice}/-`;
-    }));
-</script> -->
-
-<script>
-
-    function calculateTotal() {
-
-        var package = parseInt(document.getElementById("package").value);
-        var menu =parseInt(document.getElementById("menu").value);
-        var people = parseInt(document.getElementById("people").value);
+      document.getElementById("package").addEventListener("change", calculateTotal);
+      document.getElementById("menu").addEventListener("change", calculateTotal);
+      document.getElementById("people").addEventListener("change", calculateTotal);
   
-       
-        var total = (package + (menu * people));
-        document.getElementById("total").value = total;
-
-    }
-
-    document.getElementById("package").addEventListener("change", calculateTotal);
-    document.getElementById("menu").addEventListener("change", calculateTotal);
-    document.getElementById("people").addEventListener("change", calculateTotal);
-
-
-</script>
+  
+  </script>
+  
+  </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start" id="footer" style="font-family:serif;font-style: italic;font-weight: bold;background-color: #040404;color: #cda45e;">
+  
+  <!-- Copyright -->
+  <div class="text-center" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Restaurantly.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</div>
 </body>
 </html>

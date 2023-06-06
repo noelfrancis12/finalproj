@@ -73,22 +73,22 @@
     }
   }
   #button {
-	background: #cda45e;
-	font-size: 14px;
-	margin-top: 30px;
-	padding: 16px 20px;
-	border-radius: 26px;
-	border: 1px solid #D4D3E8;
-	text-transform: uppercase;
-	font-weight: 700;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	color: #0c0b09;
-	box-shadow: 0px 2px 2px #5C5696;
-	cursor: pointer;
-	transition: .2s;
-}
+     background: #cda45e;
+     font-size: 14px;
+     margin-top: 30px;
+     padding: 16px 20px;
+     border-radius: 26px;
+     border: 1px solid #D4D3E8;
+     text-transform: uppercase;
+     font-weight: 700;
+     display: flex;
+     align-items: center;
+    
+     color: #0c0b09;
+     box-shadow: 0px 2px 2px #5C5696;
+     cursor: pointer;
+     transition: .2s;
+   }
 #inp {
 	border: none;
 	border-bottom: 2px solid #D1D1D4;
@@ -96,15 +96,19 @@
 	padding: 10px;
 	padding-left: 24px;
 	font-weight: 700;
-	width: 75%;
+	font-style: italic;
+  font-weight: bold;
 	transition: .2s;
-  color: #cda45e;
+  color: #040404;
+}
+#gold{
+  border-radius: 26px;
 }
 
 
   </style>
   </head>
-  <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;opacity: 0.7;">
+  <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ;">
     
     {% for message in messages %}
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -146,24 +150,24 @@
   <!-- <button class="toggle-btn"></button> -->
   <ul>
 
-  
-    <li class="menu-item"><a href="{% url 'addc' %}">Add Food Category</a></li>
+    <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addc' %}">Add Food Category</a></li>
     
-    <li class="menu-item"> <a href="{% url 'showc' %}">Show Food Category</a></li>
-    <li class="menu-item"><a href="{% url 'addf' %}">Add Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'showc' %}">Show Food Category</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addf' %}">Add Food</a></li>
     
 
 
-    <li class="menu-item"><a href="{% url 'showf' %}">Show Food</a></li>
-    <li class="menu-item"><a href="{% url 'adde' %}">Add Events</a></li>
-    <li class="menu-item"><a href="{% url 'showe' %}">Show Events</a></li>
-    <li class="menu-item"><a href="{% url 'showu' %}">Show Users</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showf' %}">Show Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'adde' %}">Add Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showe' %}">Show Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showu' %}">Show Users</a></li>
 
 
-    <li class="menu-item"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
-    <li class="menu-item"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
     
-    <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
     
     
     <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
@@ -176,11 +180,13 @@
 <div class="main-content">
 <center>
     <div class="container-fluid mt-5 " style="border-radius: 10px; " id="bgi">
-        <form action="{% url 'editfdb' food.id %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'editfdb' food.id %}" method="post" enctype="multipart/form-data" class="w-50">
             {% csrf_token %}
-<h1 style="color:#cda45e ;" >Edit Food Items</h1>
+<h1 style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;" >Edit Food Items</h1>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Food Name:</label>
 <input type="text" name="f_name" placeholder="Name of Food" class="form-control" value="{{food.f_name}}" id="inp"><br>
-<select name="opt" class="form-control" id="" style="background-color:#cda45e ;">
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Food Category Name:</label>
+<select name="opt" class="form-control" id="gold" style="background-color:#cda45e ;">
     
     {% for c in category %}
     {% if c.id == food.category.id %}
@@ -190,12 +196,16 @@
     {% endif %}
     {% endfor %}
 </select>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Description:</label>
 <input type="text" name="desc" placeholder="Description" class="form-control" value="{{food.desc}}" id="inp"><br>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Quantity:</label>
 <input type="number" name="qty" placeholder="Quantity" class="form-control" value="{{food.qty}}" id="inp"><br>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Price:</label>
 <input type="number" name="price" placeholder="Price" class="form-control" value="{{food.price}}" id="inp"><br>
-<input type="file" name="f_image" placeholder="Category" class="form-control" accept="image/*" value="{{food.f_image}}" style="background-color:#cda45e ;"><br>
+<label for="date" style="text-align: left;float: left;font-style: italic;font-weight: bold;">Edit Food Image:</label>
+<input type="file" name="f_image" placeholder="Category" id="gold" class="form-control" accept="image/*" value="{{food.f_image}}" style="background-color:#cda45e ;"><br>
 
-<button type="submit" style="width: 200px;" class="btn btn-warning" id="button">SAVE</button><br>
+<button type="submit"  class="btn btn-warning" id="button">SAVE</button><br>
 </div><br><br><br>
 </center>
 </div>

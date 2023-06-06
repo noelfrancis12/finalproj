@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurantly</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    /* Update the color scheme */
+    :root {
+      --primary-color: #cda45e;
+      --secondary-color: #0c0b09;
+    
+    }
+
+    body {
+      background-color: var(--secondary-color);
+    }
+
+    .navbar {
+      background-color: var(--secondary-color);
+    }
+
+    .navbar-brand,
+    .navbar-nav .nav-link {
+      color: var(--primary-color);
+    }
+
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: var(--primary-color);
+    }
+
+    .about {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+    .featured-dishes .card {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      height: 400px; /* Set a fixed height for all cards */
+    }
+
+    .featured-dishes .card-title,
+    .featured-dishes .card-text,
+    .featured-dishes .btn-primary {
+      color: var(--secondary-color);
+    }
+
+    .reviews {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .reviews .carousel-indicators li {
+      background-color: var(--primary-color);
+    }
+
+    .reviews .carousel-item.active .card {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+    .reviews .carousel-item.active .card-title,
+    .reviews .carousel-item.active .card-text {
+      color: var(--secondary-color);
+    }
+
+    .contact {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+    .contact h2 {
+      color: var(--secondary-color);
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea,
+    .contact button {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .footer {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    
+  /* Styling for the section title */
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .section-title p {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 0;
+  }
+
+  /* Styling for the boxes */
+  .box {
+    padding: 30px;
+    background-color: #cda45e;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .box:hover {
+    transform: translateY(-5px);
+  }
+
+  
+
+  .box h4 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0c0b09;
+    margin-bottom: 15px;
+  }
+
+  .box p {
+    font-size: 16px;
+    color: #0c0b09;
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    font-family: "Agency FB", sans-serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background-color: #cda45e;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+  }
+
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 0;
+  }
+  
+  </style>
+</head>
+<body>
+  {% load static %}
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark " style="color: #0c0b09;">
+    <div class="container">
+      
+      <a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;float: left;background-color: #feb12d;"></a>
+      <h1 style="color: #feb12d;font-family: Agency FB;font-style: italic;" class="pl-2 pt-5">Restaurantly</h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" style="color: #feb12d;" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #feb12d;" href="{% url 'loginpg' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #feb12d;" href="{% url 'signup' %}">Register</a>
+          </li>
+          
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<!-- Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 300px;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://wallpaperaccess.com/full/3014596.jpg" height="300px" alt="First slide">
+      <div class="carousel-caption">
+        <h3 style="color: #feb12d;font-family: Agency FB;font-style: italic;">Fine Dining</h3>
+        <p style="color: #feb12d;font-family: Agency FB">Best dishes at your disposal</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://wallpaperaccess.com/full/3014602.jpg" height="300px" alt="Second slide">
+      <div class="carousel-caption">
+        <h3 style="color: #feb12d;font-family: Agency FB;font-style: italic;">Elegant Events</h3>
+        <p style="color: #feb12d;font-family: Agency FB">Oraganise your important dates here</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://wallpaperaccess.com/full/3014609.jpg" height="300px" alt="Third slide">
+      <div class="carousel-caption">
+        <h3 style="color: #feb12d;font-family: Agency FB;font-style: italic;">Mystique Ambience</h3>
+        <p style="color: #feb12d;font-family: Agency FB">We strive to achieve perfection !</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+ 
+
+
+  
+
+
+
+
+
+  <!-- About -->
+  <section class="about py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4" style="font-family: Agency FB;">ABOUT US</h2>
+          <p style="font-style: italic;">We heartily welcome you to our humble establishment. Ours is a top-notch catering and event management service and all the services we provide are at reasonable cost, without sacrificing elegance and luxury. Quality is not a compromise for us and we donot make any sacrifices when it comes to booking time and customer service. We
+            consider our patrons as one of our own Restaurantly family and thus the respect ,support and love we have earned from them over 
+            the last 18 years.Thank you for being one of us !  </p>
+        </div>
+        <div class="col-md-6">
+          <img src="https://wallpaperaccess.com/full/3014601.jpg" alt="About Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div style="background-image: url(https://wallpaperaccess.com/full/3014745.jpg);background-repeat: no-repeat;background-size: cover ;"  >
+<!-- ======= Why Us Section ======= -->
+<section id="why-us" class="why-us">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2 style="color: #0c0b09;font-family: Agency FB;font-weight: bold">WHY US</h2>
+      <p style="color: #0c0b09;font-family: Agency FB;font-weight: bold">Why Choose Our Restaurant ?</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-4" >
+        <div class="box" data-aos="zoom-in" data-aos-delay="100" >
+          
+          <h4 style="font-family: Agency FB;">Fast, Non-contact Delivery</h4>
+          <p style="font-style: italic;">Food is delivered at very fast pace without any physical contact. Be sure to stay and eat healthy !</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="box" data-aos="zoom-in" data-aos-delay="100">
+         
+          <h4 style="font-family: Agency FB;">No Sacrifices</h4>
+          <p style="font-style: italic;">We donot make any sacrifices when it comes to quality, time and customer service.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="box" data-aos="zoom-in" data-aos-delay="100">
+          
+          <h4 style="font-family: Agency FB;">Five-star Experience</h4>
+          <p style="font-style: italic;">Experience a five-star cuisine or event at an affordable fee, At your own leisure. Join us today !</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Why Us Section -->
+  <!-- Featured Dishes -->
+  <section class="featured-dishes py-5">
+    <div class="container">
+      <h2 class="text-center mb-4" style="color: #0c0b09;font-family: Agency FB;font-weight: bold">FEATURED DISHES</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.dxFnJKfMGgi7b_dztN0xoAHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" class="card-img-top" alt="Dish 1">
+            <div class="card-body">
+              <h5 class="card-title" style="font-family: Agency FB;">Pastas</h5>
+              <p class="card-text" style="font-style: italic;">Savory Italian dish</p>
+              <a href="{% url 'loginpg' %}" class="btn btn-warning">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.djlnJoe23sxS415sQi--CQHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" class="card-img-top" alt="Dish 2">
+            <div class="card-body">
+              <h5 class="card-title" style="font-family: Agency FB;">Pizza</h5>
+              <p class="card-text" style="font-style: italic;">Classsic Italian bread</p>
+              <a href="{% url 'loginpg' %}" class="btn btn-warning">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.D5hvEqNd5UZlib0PLS2GvQHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" class="card-img-top" alt="Dish 3">
+            <div class="card-body">
+              <h5 class="card-title" style="font-family: Agency FB;">Seafood Buffet</h5>
+              <p class="card-text" style="font-style: italic;">Fresh Seafood at your table</p>
+              <a href="{% url 'loginpg' %}" class="btn btn-warning">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Reviews -->
+  <section class="reviews py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 section-title" style="color: #feb12d;font-family: Agency FB;" >CUSTOMER REVIEWS</h2>
+      <div id="reviewsCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#reviewsCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#reviewsCarousel" data-slide-to="1"></li>
+          <li data-target="#reviewsCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Agency FB;">Good Pizzas</h5>
+                <p class="card-text" style="font-style: italic;">"Tastes like authentic Italian ones."</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Agency FB;">Great Ambience</h5>
+                <p class="card-text" style="font-style: italic;">"The lighting and decorations fill me with awe."</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="font-family: Agency FB;">Great Memories</h5>
+                <p class="card-text" style="font-style: italic;">"I had my wedding party organized here."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#reviewsCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#reviewsCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- ======= Chefs Section ======= -->
+<section id="chefs" class="chefs">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2 style="color: #feb12d;font-family: Agency FB;font-style: italic;" >CHEFS</h2>
+      <p style="color: #feb12d;font-family: Agency FB;font-style: italic;">Our Proffesional Chefs</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="member" data-aos="zoom-in" data-aos-delay="100">
+          <img src="{% static 'assets/img/chefs/chefs-1.jpg' %}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4 style="color: #feb12d;font-family: Agency FB;font-style: italic;">Walter White</h4>
+              <span style="color: #feb12d;font-family: Agency FB;font-style: italic;">Master Chef</span>
+            </div>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="member" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'assets/img/chefs/chefs-2.jpg' %}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4 style="color: #feb12d;font-family: Agency FB;font-style: italic;">Sarah Jhonson</h4>
+              <span style="color: #feb12d;font-family: Agency FB;font-style: italic;">Patissier</span>
+            </div>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="member" data-aos="zoom-in" data-aos-delay="300">
+          <img src="{% static 'assets/img/chefs/chefs-3.jpg' %}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4 style="color: #feb12d;font-family: Agency FB;font-style: italic;">William Anderson</h4>
+              <span style="color: #feb12d;font-family: Agency FB;font-style: italic;">Cook</span>
+            </div>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Chefs Section -->
+ <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2 style="font-family: Agency FB;">CONTACT US</h2>
+        
+      </div>
+    </div>
+
+    <div data-aos="fade-up">
+      <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251482.71849925144!2d76.13612049664623!3d9.98233153135355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1685993296662!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="container" data-aos="fade-up">
+
+      <div class="row mt-5">
+
+        <div class="col-lg-4">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4 style="font-style: italic;">Location:</h4>
+              <p style="font-style: italic;">A108 Rouxville Street, Kochi, EKM 535022</p>
+            </div>
+
+            <div class="open-hours">
+              <i class="bi bi-clock"></i>
+              <h4 style="font-style: italic;">Open Hours:</h4>
+              <p style="font-style: italic;">
+                Monday-Saturday:<br>
+                11:00 AM - 2300 PM
+              </p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4 style="font-style: italic;">Email:</h4>
+              <p style="font-style: italic;">Restaurantly@example.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4 style="font-style: italic;">Call:</h4>
+              <p style="font-style: italic;">+08 99999999</p>
+            </div>
+
+          </div>
+
+        </div>
+
+       
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+
+  <!-- Footer -->
+  <footer class="footer py-3">
+    <div class="container">
+      <p class="text-center" style="color:#feb12d ;font-style: italic;">&copy; 2023 Restaurantly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

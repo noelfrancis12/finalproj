@@ -99,11 +99,22 @@
      width: 75%;
      transition: .2s;
    }
-   
+   #footer {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      
+    } 
    
      </style>
      </head>
-     <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;">
+     <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ;">
        
        {% for message in messages %}
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -141,26 +152,26 @@
    
    
    {% endfor %}
-   <div class="sidebar" style="opacity: 0.7;">
+   <div class="sidebar">
      <!-- <button class="toggle-btn"></button> -->
      <ul>
    
-     
-       <li class="menu-item"><a href="{% url 'accountpg'  %}">Account</a></li>
+      <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+       <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'accountpg'  %}">Account</a></li>
        
-       <li class="menu-item"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
-       <li class="menu-item"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
-       
-   
-   
-       <li class="menu-item"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
+       <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'foodbooking'  %}">Book Catering Service</a></li>
+       <li class="menu-item" style="font-style: italic;font-weight: bold;"><a  href="{% url 'eventbooking'  %}">Book Event and Food</a></li>
        
    
    
+       <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'bookinglist'  %}">Show Bookings</a></li>
+       
+   
+   
        
    
        
-       <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+       <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
        
        
        <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
@@ -174,28 +185,41 @@
    
 
 
-<center>  
-    
+<center> 
+  
+  <h1 style="font-family:serif;font-style: italic;font-weight: bold;text-decoration: underline;">Your Profile</h1>
     <div class="card mt-5 bg-dark" style="width: 18rem;color: #cda45e;">
         {% if usrkey.image %}
     <img src="{{usrkey.image.url}}" alt="" style="width:100%">
     {% endif %}
         <div class="card-body">
-            <h5 class="card-title">First Name: {{ usrkey.userc.first_name }}</h5>
+            <h5 class="card-title">Username: {{ usrkey.userc.username }}</h5>
+            <p class="card-text">First name: {{ usrkey.userc.first_name }}</p>
             <p class="card-text">Last name: {{ usrkey.userc.last_name }}</p>
             <p class="card-text">Email: {{ usrkey.userc.email }}</p>
             <p class="card-text">Phone number: {{ usrkey.number }}</p>
             <p class="card-text">Address: {{ usrkey.address }}</p>
             <p class="card-text">Age: {{ usrkey.age }}</p>
+            <a href="{% url 'editpage' %}" style="font-family: Arial, Helvetica, sans-serif;text-decoration: none;color: #ffffff;">Edit Profile</a>
         </div>
-    </div>
+    </div><br>
 
-    
+   <!-- Footer -->
+<footer class="text-center text-lg-start" id="footer" style="font-family:serif;font-style: italic;font-weight: bold;background-color: #040404;color: #cda45e;">
+  
+  <!-- Copyright -->
+  <div class="text-center" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Restaurantly.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer --> 
 
     </center>
           
 
 
-
+ 
 </body>
 </html>

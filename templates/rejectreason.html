@@ -98,12 +98,13 @@
 	font-weight: 700;
 	width: 75%;
 	transition: .2s;
+  color: #040404;
 }
 
 
   </style>
   </head>
-  <body style="overflow-y: scroll;background-image: url(https://wallpapercave.com/dwp1x/wp1874155.jpg) ;background-repeat: no-repeat;background-size: cover ;opacity: 0.7;">
+  <body style="overflow-y: scroll;background-image: url(https://wallpaperaccess.com/full/1204346.jpg) ;background-repeat: no-repeat;background-size: cover ;">
     
     {% for message in messages %}
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -145,24 +146,24 @@
   <!-- <button class="toggle-btn"></button> -->
   <ul>
 
-  
-    <li class="menu-item"><a href="{% url 'addc' %}">Add Food Category</a></li>
+    <li class="menu-item"><a href="{% url 'home' %}"><img src="https://cdn-icons-png.flaticon.com/128/6819/6819260.png" style="height: 100px;width: 100px;"></a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addc' %}">Add Food Category</a></li>
     
-    <li class="menu-item"> <a href="{% url 'showc' %}">Show Food Category</a></li>
-    <li class="menu-item"><a href="{% url 'addf' %}">Add Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"> <a href="{% url 'showc' %}">Show Food Category</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'addf' %}">Add Food</a></li>
     
 
 
-    <li class="menu-item"><a href="{% url 'showf' %}">Show Food</a></li>
-    <li class="menu-item"><a href="{% url 'adde' %}">Add Events</a></li>
-    <li class="menu-item"><a href="{% url 'showe' %}">Show Events</a></li>
-    <li class="menu-item"><a href="{% url 'showu' %}">Show Users</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showf' %}">Show Food</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'adde' %}">Add Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showe' %}">Show Events</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'showu' %}">Show Users</a></li>
 
 
-    <li class="menu-item"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
-
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'eventrequest' %}">Show User Bookings</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'approvedbookings' %}">Approved Bookings</a></li>
     
-    <li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+    <li class="menu-item" style="font-style: italic;font-weight: bold;"><a href="{% url 'logout' %}">Logout</a></li>
     
     
     <!-- <li class="menu-item"><a data-bs-toggle="modal" data-bs-target="#registrationmodal" href="">Register</a></li> -->
@@ -185,7 +186,7 @@
           {% csrf_token %}
   
           <div class="mb-3" style="margin-top: 200px;">
-            <label for="exampleFormControlTextarea1" class="form-label text-center" style="color: rgb(5, 12, 69);">Reason for rejection</label>
+            <label for="exampleFormControlTextarea1" class="form-label text-center" >Reason for rejection:</label>
             <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
           </div>
             
